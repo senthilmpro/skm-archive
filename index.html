@@ -31,6 +31,7 @@
                     <div>
                         <span><a ng-href="{{post.url}}" target="_blank">{{post.url}}</a></span>
                         <span style="font-size: 1.1em"> File count : {{post.urlList.length}}</span>
+                        <span style="padding-left:10px" class="badge badge-secondary"><a style="color:white" ng-href="{{getDownloadLink(post.url)}}" target="_blank">Download</a></span>
                     </div>
                     
                 </div>

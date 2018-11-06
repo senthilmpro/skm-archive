@@ -25,7 +25,7 @@ app.controller('homeCtrl', function ($scope, utilService, httpService) {
                             resultArr = resultArr.concat({
                                 url: requestUrl,
                                 data: data,
-                                urlList : val.validFileUrlList,
+                                urlList: val.validFileUrlList,
                                 index: val.index
                             });
                         });
@@ -37,6 +37,10 @@ app.controller('homeCtrl', function ($scope, utilService, httpService) {
             }
         }
     });
+
+    $scope.getDownloadLink = function (link) {
+        return link.replace('/metadata/', '/download/');
+    };
 
     function processResponseArray(responseArr) {
         if (responseArr) {
