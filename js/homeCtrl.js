@@ -92,9 +92,15 @@ app.controller('homeCtrl', function ($scope, utilService, httpService) {
                 var file = files[i];
                 if (ignoredFormats.indexOf(file.format) == -1) {
                     // finalFileList.push(file);
-                    finalFileList.push(file.name);
+            if (files && files.length > 0) {
+                for (let i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    if (ignoredFormats.indexOf(file.format) == -1) {
+                        // finalFileList.push(file);
+                        finalFileList.push(file.name);
+                    };
                 };
-            };
+            }
 
             var hostUrl = `${protocol}://${primaryHost}/dir/`;
             var completeUrlList = [];
