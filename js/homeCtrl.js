@@ -112,7 +112,7 @@ app.controller('homeCtrl', function ($scope, utilService, httpService) {
             }
 
 
-            var hostUrl = `${protocol}://${primaryHost}/dir/`;
+            var hostUrl = `${protocol}://${primaryHost}${dir}/`;
             var completeUrlList = [];
 
             finalFileList.forEach(function (value, index) {
