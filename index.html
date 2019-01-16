@@ -32,6 +32,12 @@
                         <span><a ng-href="{{post.url}}" target="_blank">{{post.url}}</a></span>
                         <span style="font-size: 1.1em"> File count : {{post.urlList.length}}</span>
                         <span style="padding-left:10px" class="badge badge-secondary"><a style="color:white" ng-href="{{getDownloadLink(post.url)}}" target="_blank">Download</a></span>
+                        <button class="btn btn-primary" ng-click="showList(post)">Toggle URL</button>
+                        <ul ng-if="post.showList == true && post.urlList.length > 0">
+                            <li ng-repeat="item in post.urlList">
+                                <a ng-href="{{item}}">{{item}}</a>
+                            </li>
+                        </ul>
                     </div>
                     
                 </div>
