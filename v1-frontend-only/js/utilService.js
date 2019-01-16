@@ -1,7 +1,7 @@
 app.service('utilService', function(){
 
-    var getWpUri = function(site = 'dumppro.wordpress.com'){
-        return `https://public-api.wordpress.com/rest/v1.1/sites/${site}/posts`;
+    var getWpUri = function(site = 'dumppro.wordpress.com', number=10){
+        return `https://public-api.wordpress.com/rest/v1.1/sites/${site}/posts?number=${number}&fields=title`;
     };
 
     var isValidUri = function(myUri){
