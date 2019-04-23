@@ -11,6 +11,14 @@ const routes = [
             const urlResponse = await HttpHelper.getArchiveUrlResponses(urlArray);
             return urlResponse;
         }
+    },
+    {
+        'method' : 'GET',
+        'url' : '/api/users',
+        'handler' : async (req, reply) => {
+            const data = await HttpHelper.getAllUsers();
+            return data;
+        }
     }
 ]
 

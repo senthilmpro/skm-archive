@@ -1,5 +1,6 @@
 const axios = require('axios');
 const _ = require('lodash');
+var Buffer = require('buffer').Buffer;
 
 module.exports = {
     getHttpUrl: async function (username = "tempoguyx+61ed731d8d8d@gmail.com") {
@@ -123,5 +124,27 @@ module.exports = {
             return completeUrlList;
 
         }
+    },
+    getAllUsers : function(){
+        var requestUrl = "https://public-api.wordpress.com/rest/v1.1/sites/dumppro2.home.blog/posts?number=1&fields=title";
+        return axios.get(requestUrl).then(res => res.data).then(function(data){
+            var posts = data.posts;
+            var emailList = [];
+            if(posts && posts.length > 0){
+                posts.forEach(function(val, ind){
+                    var title = val.title;
+                    var parsedTitle = Buffer.from(title, 'base64').toString('binary');
+                    console.log(parsedTitle);
+                    try {
+                        parsedTitle = JSON.parse(parsedTitle);
+                    } catch(ex){
+
+                    }
+                    var email = parsedTitle.email;
+                    emailList = emailList.concat(email);
+                });
+            }
+            return emailList;
+        });
     }
 }

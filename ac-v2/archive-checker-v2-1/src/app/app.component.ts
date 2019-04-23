@@ -18,6 +18,15 @@ export class AppComponent {
     });
     console.log(this.user);  
   }
+        
+  getAllData(){
+    this.data.getAllUsers().subscribe(c=> {
+      var d = c;
+      this.data.getUsers(c[0]).subscribe(d => {
+        console.log(d);
+      });
+    })
+  }
 
   constructor(private data:DataService){};
 

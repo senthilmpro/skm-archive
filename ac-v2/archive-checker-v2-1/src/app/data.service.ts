@@ -12,4 +12,8 @@ export class DataService {
     return this.http.get('/api/user/' + name);
   }
 
+  getAllUsers(){
+    return this.http.get('/api/users');
+  }
+
 }
