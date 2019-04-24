@@ -28,6 +28,23 @@ module.exports = {
         });
         return p;
     },
+    getArchiveUrlArr : function(data){
+        if (data && data.response && data.response.docs && data.response.docs.length > 0) {
+            try {
+                var urlArray = [];
+                data.response.docs.forEach((v, i) => {
+                    let identifier = v.identifier;
+                    let archiveUrl = "https://archive.org/metadata/" + identifier;
+                    urlArray = urlArray.concat(archiveUrl);
+                });
+                return urlArray;
+            } catch (ex) {
+                return [];
+            }
+        } else {
+            return [];
+        }
+    },
     getArchiveUrlResponses: async function (urlArray) {
         var p = new Promise((resolve, reject) => {
             if (urlArray && urlArray.length > 0) {
@@ -126,7 +143,7 @@ module.exports = {
         }
     },
     getAllUsers : function(){
-        var requestUrl = "https://public-api.wordpress.com/rest/v1.1/sites/dumppro2.home.blog/posts?number=1&fields=title";
+        var requestUrl = "https://public-api.wordpress.com/rest/v1.1/sites/dumppro2.home.blog/posts?number=10&fields=title";
         return axios.get(requestUrl).then(res => res.data).then(function(data){
             var posts = data.posts;
             var emailList = [];
@@ -147,9 +164,32 @@ module.exports = {
             return emailList;
         });
     },
-    getAllUsersMetadata : function(d){
-        console.log(d);
-        return d;
+    getAllUsersMetadata : async function(d){
+
+        var p = new Promise((resolve, reject) => {
+            var emailList = d.data;
+            var self = this;
+            var apiCallList = [];
+            var parsedUrlList = [];
+            
+            if(emailList){
+                console.log("getAllUsersMetadata ", emailList);
+                // get metadata for all users.
+                emailList.forEach(function(v,i){
+                    apiCallList.push(self.getHttpUrl(v.trim()));
+                });
+            }
+
+            axios.all(apiCallList).then(data => {
+                // return all posts in array.
+                data.forEach(function(d){
+                    parsedUrlList = parsedUrlList.concat(self.getArchiveUrlArr(d));
+                });
+                
+                resolve(parsedUrlList);
+            });
+        });
+        return p;
     }
 
 }

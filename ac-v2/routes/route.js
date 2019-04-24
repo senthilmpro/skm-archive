@@ -28,7 +28,9 @@ const routes = [
             var body = req.body;
 
             const data = await HttpHelper.getAllUsersMetadata(body);
-            return data;
+            console.log(data);
+            var allUrlResponse = await HttpHelper.getArchiveUrlResponses(data);
+            return allUrlResponse;
         }
     }
 ]
