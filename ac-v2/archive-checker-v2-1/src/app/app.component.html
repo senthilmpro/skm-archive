@@ -1,15 +1,29 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    {{ title }}!
   </h1>
 
 </div>
 
-<div class="container">
-  <div class="form-group">
-    <input class="form-control" type="text" style="width: 500px;" placeholder="enter username here" (input)="user=$event.target.value"
-    />
-    <button class="btn btn-info" (click)="getData()">Get User</button>
+<div class="container" style="padding-top: 30px;">
+
+  <div *ngFor="let data of allData" class="item-container list-group">
+    <span>
+        <a href="{{data.url}}">{{ data.url }} </a>
+    </span>
+    <span>
+      <b>File Count : </b> <span class="file-count"> {{data.urlList.length }}</span>
+    </span>
+    <div class="file-list">
+        <ul>
+            <li *ngFor="let item of data.urlList">
+              {{ item }}
+            </li>
+          </ul>
+    </div>
+    
   </div>
+
+
 </div>

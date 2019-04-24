@@ -1,0 +1,12 @@
+.file-count {
+    font-size: 1.1em;
+}
+
+.file-list {
+    padding-left : 20px;
+    background-color: azure;
+}
+
+.item-container {
+    padding : 20px;
+}

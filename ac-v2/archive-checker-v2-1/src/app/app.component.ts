@@ -8,7 +8,7 @@ import {DataService} from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'archive-checker-v2';
+  title = 'Archive checker v2';
   author = 'skm';
   user : String;
   allData = [];
