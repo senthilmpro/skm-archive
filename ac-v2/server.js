@@ -11,7 +11,7 @@ routes.forEach((route, index) => {
 
 // point to public folder.
 fastify.register(require('fastify-static'), {
-  root: path.join(__dirname, 'archive-checker-v2',"dist",'archive-checker-v2')
+  root: path.join(__dirname, 'archive-checker-v2-1',"dist",'archive-checker-v2')
   //prefix: '/', // optional: default '/'
 });
 

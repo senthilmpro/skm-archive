@@ -16,4 +16,12 @@ export class DataService {
     return this.http.get('/api/users');
   }
 
+  getAllUsersMetadata(c){
+    let d = c as Array<String>;
+    let obj = {
+      data : d
+    };
+    return this.http.post('/api/users', obj);
+  }
+
 }

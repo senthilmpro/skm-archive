@@ -146,5 +146,10 @@ module.exports = {
             }
             return emailList;
         });
+    },
+    getAllUsersMetadata : function(d){
+        console.log(d);
+        return d;
     }
+
 }

@@ -19,6 +19,17 @@ const routes = [
             const data = await HttpHelper.getAllUsers();
             return data;
         }
+    },
+    {
+        'method' : 'POST',
+        'url' : '/api/users',
+        'handler' : async (req, reply) => {
+            console.log(req.body);
+            var body = req.body;
+
+            const data = await HttpHelper.getAllUsersMetadata(body);
+            return data;
+        }
     }
 ]
 

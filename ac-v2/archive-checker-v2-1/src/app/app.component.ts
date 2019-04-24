@@ -10,7 +10,8 @@ import {DataService} from './data.service';
 export class AppComponent {
   title = 'archive-checker-v2';
   author = 'skm';
-  user : String
+  user : String;
+  allData = [];
   
   getData(){
     this.data.getUsers(this.user).subscribe(c => {
@@ -21,13 +22,17 @@ export class AppComponent {
         
   getAllData(){
     this.data.getAllUsers().subscribe(c=> {
-      var d = c;
-      this.data.getUsers(c[0]).subscribe(d => {
-        console.log(d);
+      console.log(c);
+      var d = c as Array<String>;
+      this.data.getAllUsersMetadata(d).subscribe(d => {
+        this.allData = this.allData.concat(d);
       });
     })
   }
 
-  constructor(private data:DataService){};
+  constructor(private data:DataService){
+    this.allData = [];
+    this.getAllData();
+  };
 
 }
