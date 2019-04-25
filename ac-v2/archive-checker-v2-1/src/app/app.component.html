@@ -10,7 +10,7 @@
 
   <div *ngFor="let data of allData" class="item-container list-group">
     <span>
-        <a href="{{data.url}}">{{ data.url }} </a>
+        <a href="{{data.url}}"  target="_blank" >{{ data.url }} </a>
     </span>
     <span>
       <b>File Count : </b> <span class="file-count"> {{data.urlList.length }}</span>
@@ -18,7 +18,7 @@
     <div class="file-list">
         <ul>
             <li *ngFor="let item of data.urlList">
-              {{ item }}
+              <a href="{{item}}" target="_blank">{{item}}</a>
             </li>
           </ul>
     </div>
