@@ -13,7 +13,6 @@ router.get('/api/users', function (req, res) {
 router.post('/api/users', function (req, res) {
     
     var body = req.body;
-    console.log(body);
     getAllUsersUrl(body).then((data)=> {
         res.send(data).status(200);
     });

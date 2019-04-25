@@ -165,7 +165,6 @@ module.exports = {
         });
     },
     getAllUsersMetadata : function(d){
-        console.log(d);
         var p = new Promise((resolve, reject) => {
             if(d){
                 var emailList = d.data;
