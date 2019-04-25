@@ -165,29 +165,34 @@ module.exports = {
         });
     },
     getAllUsersMetadata : function(d){
-
+        console.log(d);
         var p = new Promise((resolve, reject) => {
-            var emailList = d.data;
-            var self = this;
-            var apiCallList = [];
-            var parsedUrlList = [];
-            
-            if(emailList){
-                console.log("getAllUsersMetadata ", emailList);
-                // get metadata for all users.
-                emailList.forEach(function(v,i){
-                    apiCallList.push(self.getHttpUrl(v.trim()));
-                });
-            }
-
-            axios.all(apiCallList).then(data => {
-                // return all posts in array.
-                data.forEach(function(d){
-                    parsedUrlList = parsedUrlList.concat(self.getArchiveUrlArr(d));
-                });
+            if(d){
+                var emailList = d.data;
+                var self = this;
+                var apiCallList = [];
+                var parsedUrlList = [];
                 
-                resolve(parsedUrlList);
-            });
+                if(emailList){
+                    console.log("getAllUsersMetadata ", emailList);
+                    // get metadata for all users.
+                    emailList.forEach(function(v,i){
+                        apiCallList.push(self.getHttpUrl(v.trim()));
+                    });
+                }
+    
+                axios.all(apiCallList).then(data => {
+                    // return all posts in array.
+                    data.forEach(function(d){
+                        parsedUrlList = parsedUrlList.concat(self.getArchiveUrlArr(d));
+                    });
+                    
+                    resolve(parsedUrlList);
+                });
+            } else {
+                resolve([]);
+            }
+            
         });
         return p;
     }
