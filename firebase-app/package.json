@@ -1,0 +1,21 @@
+{
+  "name": "fastify-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "fastify": "^2.2.0"
+  },
+  "dependencies": {
+    "buffer": "^5.2.1",
+    "fastify-static": "^2.4.0",
+    "lodash": "^4.17.11"
+  }
+}
