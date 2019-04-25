@@ -1,1 +1,5 @@
-{}
+{
+  "projects": {
+    "archive-checker-v2": "archive-checker-v2"
+  }
+}

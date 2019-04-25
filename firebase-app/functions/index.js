@@ -1,27 +1,23 @@
 const functions = require('firebase-functions');
 
-const fastify = require('fastify')({ logger: true });
-const axios = require('axios');
-const path = require('path');
+const app = require('./express');
+exports.greetFromFastify = functions.https.onRequest(app);
 
-const routes = require('./routes/route');
-//console.log(route);
 
-routes.forEach((route, index) => {
-  fastify.route(route)
-});
 
-// point to public folder.
-fastify.register(require('fastify-static'), {
-  root: path.join(__dirname, 'archive-checker-v2-1',"dist",'archive-checker-v2')
-  //prefix: '/', // optional: default '/'
-});
+// const fastify = require('fastify')({ logger: true });
 
-fastify.get('/', function (req, reply) {
-  reply.sendFile('index.html') // serving path.join(__dirname, 'public', 'myHtml.html') directly
-})
+// const routes = require('./routes/route');
+// //console.log(route);
 
-// Run the server!
+// routes.forEach((route, index) => {
+//   fastify.route(route)
+// });
+
+// exports.app = functions.https.onRequest(fastify);
+
+
+/*// Run the server!
 const start = async () => {
   try {
     await fastify.listen(3000)
@@ -31,4 +27,4 @@ const start = async () => {
     process.exit(1)
   }
 }
-start()
+start()*/
