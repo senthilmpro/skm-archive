@@ -1,0 +1,15 @@
+.bold_text {
+    font-weight: bold;
+}
+
+.normal {
+    font-weight: normal;
+}
+
+.link-container {
+    padding-bottom: 10px;
+}
+
+.links {
+    padding-top: 10px;
+}

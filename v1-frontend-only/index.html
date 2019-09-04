@@ -36,13 +36,18 @@
                 <div class="link-container">
                     <div class="row">
                         <span class="col-md-2">
-                            <span style="padding-right: 10px;">Files : {{post.urlList.length}}</span>
-                            <button class="btn btn-primary" ng-click="showList(post)">Toggle URL</button>
+                            <span style="padding-right: 10px;" ng-class="post.urlList.length > 0 ? 'bold_text' : 'normal'">Files : {{post.urlList.length}}</span>
+                            <span style="padding-right: 5px;"> 
+                                <a ng-href="{{getDownloadLink(post.url)}}" target="_blank">
+                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                </a> 
+                            </span>
+                            <span>
+                                <button class="btn btn-primary" ng-click="showList(post)">Toggle</button>
+                            </span>
                         </span>
-                        <span class="col-md-7"><a ng-href="{{post.url}}" target="_blank">{{post.url}}</a></span>
-                        <span class="col-md-1"><a ng-href="{{getDownloadLink(post.url)}}" target="_blank"><i
-                                    class="fa fa-download" aria-hidden="true"></i></a>
-                        </span>
+                        <span class="col-md-6"><a ng-href="{{post.url}}" target="_blank">{{post.url}}</a></span>
+                        
 
                     </div>
                     <div class="links">
@@ -61,15 +66,7 @@
     <script src="js/httpService.js"></script>
     <script src="js/utilService.js"></script>
     <script src="js/homeCtrl.js"></script>
-    <style>
-        .link-container {
-            padding-bottom: 10px;
-        }
-
-        .links {
-            padding-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/main.css" />
 </body>
 
 </html>
